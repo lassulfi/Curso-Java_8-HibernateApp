@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 29/12/2018 10:54:53 by Hibernate Tools 5.2.11.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="com.abctreinamentos.Pagamento" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="PAGAMENTO">
+        <composite-id class="com.abctreinamentos.PagamentoId" mapped="false" name="id" unsaved-value="undefined">
+            <key-property name="cpf" type="long">
+                <column name="CPF" precision="22" scale="0"/>
+            </key-property>
+            <key-property name="cdcurso" type="int">
+                <column name="CDCURSO" precision="22" scale="0"/>
+            </key-property>
+            <key-property name="datainscricao" type="string">
+                <column length="10" name="DATAINSCRICAO"/>
+            </key-property>
+        </composite-id>
+        <many-to-one class="com.abctreinamentos.Cliente" embed-xml="true" fetch="select" insert="false" name="cliente" not-found="exception" optimistic-lock="true" unique="false" update="false">
+            <column name="CPF" not-null="true" precision="22" scale="0"/>
+        </many-to-one>
+        <many-to-one class="com.abctreinamentos.Curso" embed-xml="true" fetch="select" insert="false" name="curso" not-found="exception" optimistic-lock="true" unique="false" update="false">
+            <column name="CDCURSO" not-null="true" precision="22" scale="0"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>
